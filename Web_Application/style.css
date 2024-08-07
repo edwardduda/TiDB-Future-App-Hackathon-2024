@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.chat-container {
+    width: 80%;
+    height: 80vh;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-window {
+    display: flex;
+    flex-direction: column; /* Changed from column-reverse to column */
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.chat-message.user {
+    align-self: flex-start;
+    background: linear-gradient(180deg, #00d9ed, #009ee8);
+    background-clip: text;
+    -webkit-background-clip: text; /* For Safari and Chrome */
+    color: transparent; /* Makes the text color itself transparent */
+    -webkit-text-fill-color: transparent; /* Ensures the gradient is visible on text */
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 70%;
+}
+
+.chat-message.bot {
+    align-self: flex-end;
+    color: #333;
+}
+
+.chat-input-container {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#chat-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#send-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+
+#graph-button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#graph-button:hover {
+    background-color: #218838;
+}
+
+.graph-container {
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+}
+
+.chat-message.graph {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.chat-message.user.graph {
+    justify-content: flex-start;
+}
+
+.chat-message.bot.graph {
+    justify-content: flex-end;
+}
