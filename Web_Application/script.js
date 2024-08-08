@@ -24,10 +24,22 @@ function sendMessage() {
         displayMessage(message, 'user');
         inputField.value = '';
 
-        // Simulate a bot response after a short delay
-        setTimeout(() => {
-            displayMessage('This is a bot response.', 'bot');
-        }, 500);
+        // Make API request to backend
+        fetch('http://127.0.0.1:5000/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            displayMessage(data.response, 'bot');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            displayMessage('An error occurred while processing your request.', 'bot');
+        });
     }
 }
 
@@ -35,7 +47,15 @@ function displayMessage(message, sender) {
     const chatWindow = document.getElementById('chat-window');
     const messageElement = document.createElement('div');
     messageElement.classList.add('chat-message', sender);
-    messageElement.textContent = message;
+    
+    // Split the message by newlines and create paragraph elements
+    const paragraphs = message.split('\n').filter(line => line.trim() !== '');
+    paragraphs.forEach(paragraph => {
+        const p = document.createElement('p');
+        p.textContent = paragraph;
+        messageElement.appendChild(p);
+    });
+
     chatWindow.appendChild(messageElement);
     
     // Scroll to the bottom of the chat window
@@ -119,7 +139,7 @@ function generateDataPoints(equation) {
     const expression = math.parse(parsedEquation[1]);
     const compiledExpression = expression.compile();
 
-    for (let x = -10; x <= 10; x += 0.5) {
+    for (let x = -10; x <= 10; x += 0.25) {
         try {
             const y = compiledExpression.evaluate({x});
             points.push({x, y});

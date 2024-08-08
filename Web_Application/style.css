@@ -38,7 +38,7 @@ body {
 
 .chat-message.user {
     align-self: flex-start;
-    background: linear-gradient(180deg, #00d9ed, #009ee8);
+    background: linear-gradient(180deg, #00e0f5, #0076ac);
     background-clip: text;
     -webkit-background-clip: text; /* For Safari and Chrome */
     color: transparent; /* Makes the text color itself transparent */
@@ -98,8 +98,8 @@ body {
 }
 
 .graph-container {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     margin-top: 10px;
 }
 
